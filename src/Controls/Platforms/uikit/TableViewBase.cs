@@ -18,6 +18,8 @@ namespace Rocket.Surgery.Airframe
         protected TableViewBase()
         {
             Initialize();
+            BindControls();
+            RegisterObservers();
         }
 
         /// <summary>
@@ -26,19 +28,20 @@ namespace Rocket.Surgery.Airframe
         protected CompositeDisposable ViewBindings { get; } = new CompositeDisposable();
 
         /// <summary>
-        /// View lifecycle method that registers observers via subscriptions.
+        /// View lifecycle method that initializes the view controller.
         /// </summary>
-        protected abstract void RegisterObservers();
+        protected virtual void Initialize()
+        {
+        }
 
         /// <summary>
         /// View lifecycle method that sets up reactive bindings.
         /// </summary>
         protected abstract void BindControls();
 
-        private void Initialize()
-        {
-            BindControls();
-            RegisterObservers();
-        }
+        /// <summary>
+        /// View lifecycle method that registers observers via subscriptions.
+        /// </summary>
+        protected abstract void RegisterObservers();
     }
 }

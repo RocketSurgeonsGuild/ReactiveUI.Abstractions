@@ -21,6 +21,10 @@ namespace Rocket.Surgery.Airframe
             : base(handle)
         {
             Initialize();
+            CreateCellInterface();
+            BindControls();
+            RegisterObservers();
+            SetNeedsUpdateConstraints();
         }
 
         /// <summary>
@@ -37,9 +41,11 @@ namespace Rocket.Surgery.Airframe
         }
 
         /// <summary>
-        /// View lifecycle method that registers observers via subscriptions.
+        /// View lifecycle method that initializes the view controller.
         /// </summary>
-        protected abstract void RegisterObservers();
+        protected virtual void Initialize()
+        {
+        }
 
         /// <summary>
         /// View lifecycle method that sets up reactive bindings.
@@ -56,12 +62,9 @@ namespace Rocket.Surgery.Airframe
         /// </summary>
         protected abstract void SetupCellConstraints();
 
-        private void Initialize()
-        {
-            CreateCellInterface();
-            BindControls();
-            RegisterObservers();
-            SetNeedsUpdateConstraints();
-        }
+        /// <summary>
+        /// View lifecycle method that registers observers via subscriptions.
+        /// </summary>
+        protected abstract void RegisterObservers();
     }
 }
