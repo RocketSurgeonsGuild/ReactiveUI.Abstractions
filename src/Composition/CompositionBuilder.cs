@@ -1,4 +1,5 @@
-﻿using DryIoc;
+﻿using System;
+using DryIoc;
 using ReactiveUI;
 
 namespace Rocket.Surgery.Airframe.Composition
@@ -8,19 +9,32 @@ namespace Rocket.Surgery.Airframe.Composition
     /// </summary>
     public sealed class CompositionBuilder
     {
-        private readonly IContainer _container;
+        private IContainer _container;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CompositionBuilder"/> class.
         /// </summary>
         /// <param name="container">The container instance.</param>
+        [Obsolete("Use Container builder method.")]
         public CompositionBuilder(IContainer container = null)
         {
             _container = container ?? new Container();
         }
 
         /// <summary>
-        /// Loads the autofac module.
+        /// Adds the container to the builder.
+        /// Note: this will override the current container.
+        /// </summary>
+        /// <param name="container">The container.</param>
+        /// <returns>The composition builder.</returns>
+        public CompositionBuilder Container(IContainer container)
+        {
+            _container = container;
+            return this;
+        }
+
+        /// <summary>
+        /// Loads the <see cref="IModule"/> to the container.
         /// </summary>
         /// <typeparam name="TModule">The type of the module.</typeparam>
         /// <returns>The composition builder.</returns>

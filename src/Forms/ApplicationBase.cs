@@ -22,6 +22,7 @@ namespace Rocket.Surgery.Airframe.Forms
     {
         private readonly IPlatformRegistrar _platformRegistrar;
         private IContainer _container;
+        private CompositionBuilder _compositionBuilder;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationBase"/> class.
