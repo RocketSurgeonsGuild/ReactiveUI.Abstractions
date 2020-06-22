@@ -31,11 +31,12 @@
         <PackageReference Update="DynamicData" Version="6.*" />
         <PackageReference Update="Microsoft.Reactive.Testing" Version="4.*" />
         <PackageReference Update="Newtonsoft.Json" Version="11.0.2" />
-        <PackageReference Update="ReactiveUI" Version="10.*" />
-        <PackageReference Update="ReactiveUI.XamForms" Version="10.*" />
         <PackageReference Update="ReactiveMarbles.PropertyChanged" Version="1.4.1" />
         <PackageReference Update="Refit" Version="5.1.67" />
-        <PackageReference Update="Rg.Plugins.Popup" Version="1.2.*" />
+        <PackageReference Update="ReactiveUI" Version="11.*" />
+        <PackageReference Update="ReactiveUI.XamForms" Version="11.*" />
+        <PackageReference Update="ReactiveUI.Events.XamForms" Version="11.*" />
+        <PackageReference Update="Rg.Plugins.Popup" Version="2.*" />
         <PackageReference Update="Rocket.Surgery.Xamarin.Essentials" Version="0.4.*" />
         <PackageReference Update="Rocket.Surgery.Xamarin.Essentials.Abstractions" Version="0.4.*" />
         <PackageReference Update="RxUI.Plugins.Popup" Version="0.2.*" />
