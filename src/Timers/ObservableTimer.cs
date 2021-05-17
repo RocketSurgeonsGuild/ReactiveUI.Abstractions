@@ -29,12 +29,15 @@ namespace Rocket.Surgery.Airframe.Timers
                 .ToProperty(this, nameof(IsRunning), out _isRunning)
                 .DisposeWith(_subscriptions);
 
+            var timerStarted =
+                _timerEvents
+                   .Where(x => x is TimerStartEvent)
+                   .Cast<TimerStartEvent>();
+
             _elapsed =
                 _timerEvents
                     .CombineLatest(
-                        _timerEvents
-                           .Where(x => x is TimerStartEvent)
-                           .Cast<TimerStartEvent>()
+                        timerStarted
                            .Select(x => x.Duration),
                         start,
                         (_, duration, isRunning) => (duration, isRunning))
